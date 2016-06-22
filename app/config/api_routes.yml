@@ -1,3 +1,7 @@
 users:
     resource: AppBundle\Controller\UsersController
     type:     rest
+
+typedepokemons:
+    resource: AppBundle\Controller\TypesDePokemonController
+    type:     rest

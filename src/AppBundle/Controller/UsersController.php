@@ -2,7 +2,7 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\User;
+use AppBundle\Entity\PokemonUsers;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
@@ -26,7 +26,7 @@ class UsersController extends Controller
     public function getUsersAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('AppBundle:User')->findAll();
+        $users = $em->getRepository('AppBundle:PokemonUsers')->findAll();
 
         return array('users' => $users);
     }
@@ -44,9 +44,8 @@ class UsersController extends Controller
      * @param User $user
      * @return array
      */
-    public function getUserAction(User $user)
+    public function getUserAction(PokemonUsers $user)
     {
         return array('user' => $user);
     }
-    
 }
