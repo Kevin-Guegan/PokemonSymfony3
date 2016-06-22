@@ -3,8 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\PokemonUsers;
+use AppBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\BrowserKit\Response;
 
 class UsersController extends Controller
 {
@@ -28,7 +31,7 @@ class UsersController extends Controller
         $em = $this->getDoctrine()->getManager();
         $users = $em->getRepository('AppBundle:PokemonUsers')->findAll();
 
-        return array('users' => $users);
+        return $users;
     }
 
     /**
@@ -41,11 +44,13 @@ class UsersController extends Controller
      *  }
      * )
      *
-     * @param User $user
+     * @param PokemonUsers $user
      * @return array
      */
     public function getUserAction(PokemonUsers $user)
     {
-        return array('user' => $user);
+        return $user;
     }
+
+
 }

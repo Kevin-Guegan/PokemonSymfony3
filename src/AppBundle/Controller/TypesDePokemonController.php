@@ -21,14 +21,13 @@ class TypesDePokemonController extends Controller
      *  description="Retourne les pokemons"
      * )
      *
-     * @return array
      */
     public function getTypedepokemonsAction()
     {
         $em = $this->getDoctrine()->getManager();
         $typedepokemons = $em->getRepository('AppBundle:Typedepokemons')->findAll();
 
-        return array('pokemons' => $typedepokemons);
+        return $typedepokemons;
     }
 
     /**
@@ -41,11 +40,11 @@ class TypesDePokemonController extends Controller
      *  }
      * )
      *
-     * @param User $user
+     * @param Typedepokemons $typedepokemons
      * @return array
      */
     public function getTypedepokemonAction(Typedepokemons $typedepokemons)
     {
-        return array('pokemon' => $typedepokemons);
+        return $typedepokemons;
     }
 }
