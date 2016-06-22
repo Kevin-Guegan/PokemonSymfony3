@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Arenes" table="arenes">
+    <indexes>
+      <index name="FK_arenes_id_positions" columns="positionsId"/>
+    </indexes>
+    <id name="id" type="boolean" column="Id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="25" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="badgesid" type="boolean" column="badgesId" nullable="false"/>
+    <many-to-one field="positionsid" target-entity="Positions" fetch="LAZY">
+      <join-columns>
+        <join-column name="positionsId" referenced-column-name="Id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

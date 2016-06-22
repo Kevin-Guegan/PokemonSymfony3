@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Objets" table="objets">
+    <indexes>
+      <index name="FK_objets_id_nonjoueur" columns="npcId"/>
+      <index name="FK_objets_id_typeObjet" columns="typeObjetId"/>
+    </indexes>
+    <id name="id" type="integer" column="Id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="Nom" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="quantite" type="boolean" column="quantite" nullable="false"/>
+    <many-to-one field="npcid" target-entity="Npc" fetch="LAZY">
+      <join-columns>
+        <join-column name="npcId" referenced-column-name="Id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="typeobjetid" target-entity="Typeobjet" fetch="LAZY">
+      <join-columns>
+        <join-column name="typeObjetId" referenced-column-name="Id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

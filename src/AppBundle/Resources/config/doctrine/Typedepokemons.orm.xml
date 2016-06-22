@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\Typedepokemons" table="typedepokemons">
+    <id name="id" type="smallint" column="Id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="Nom" length="10" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="attaque" type="smallint" column="attaque" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="attaqueSpe" type="smallint" column="attaque_spe" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="defence" type="smallint" column="defence" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="defenceSpe" type="smallint" column="defence_spe" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="vitesse" type="smallint" column="vitesse" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="pv" type="smallint" column="pv" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idPokedex" type="smallint" column="id_pokedex" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-many field="typesid" target-entity="Types" inversed-by="typedepokemonsid" fetch="LAZY">
+      <join-table name="possedelestypes">
+        <join-columns>
+          <join-column name="typedepokemonsId" referenced-column-name="Id"/>
+        </join-columns>
+        <inverse-join-columns>
+          <join-column name="typesId" referenced-column-name="Id"/>
+        </inverse-join-columns>
+      </join-table>
+    </many-to-many>
+    <many-to-many field="zonesid" target-entity="Zones" mapped-by="typedepokemonsid" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>
