@@ -3,10 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Typedepokemons;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FOS\RestBundle\Controller\FOSRestController;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
-class TypesDePokemonController extends Controller
+class TypesDePokemonController extends FOSRestController
 {
     public function indexAction($name)
     {
